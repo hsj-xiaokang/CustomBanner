@@ -2,7 +2,9 @@ package com.donkingliang.bannerdemo;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -12,6 +14,7 @@ import com.donkingliang.banner.CustomBanner;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private CustomBanner<String> mBanner;
 
@@ -32,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
         images.add("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3513269361,2662598514&fm=23&gp=0.jpg");
 
         setBean(images);
+
+        /**点击事件**/
+        mBanner.setOnPageClickListener(new CustomBanner.OnPageClickListener(){
+            @Override
+            public void onPageClick(int position, Object o) {
+                Log.i(TAG,"positon="+position+" pic_url="+o.toString());
+            }
+        });
     }
 
     //设置普通指示器
